@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\appointment;
+use App\Models\doctor;
+use App\Models\Major;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,10 +63,61 @@ Route::get('/doctors', function(){
 
 
 
+//create user
+Route::get('/user',function(){
+    // User::create([
+    //     'name'=> 'alli',
+    //     'phone'=> '12233123652',
+    //     'email'=> 'jjjj@gmail.com',
+    //     'password'=> '00000120'
+    // ]);
+
+    
+    $user = new User();
+    $user = User::find(2) ;
+    $user->update([
+        'name'=> 'ali',
+        'phone'=> '12233123652',
+        'email'=> 'jjjj@gmail.com',
+        'password'=> '00000120'
+    ]);
+    dd(User::get());
+});
 
 
 
+//create majors
+Route::get('/major',function(){
+    Major::create([
+        'name' => 'dentist'
+    ]);
+});
 
+//create doctor
+Route::get('/doctor' , function(){
+    // $doc = new doctor();
+    // $doc ->name = 'mo';
+    // $doc ->phone = 01222201200;
+    // $doc ->description = "description description description description";
+    // $doc ->email = "des@gomail.com";
+    // $doc ->password = "dsdfsdfdf";
+    // $doc ->major_id = 1;
+    // $doc ->save();
+
+    $doc = doctor::find(3)->delete();
+});
+
+
+
+//create appointment
+Route::get('/appointment' , function(){
+    $appo = new appointment();
+    $appo ->name = 'ali';
+    $appo ->phone = 01222201111;
+    $appo ->email = "des@gomajjil.com";
+    $appo ->doctor_id = 1;
+    $appo ->save();
+});
 
 
 
