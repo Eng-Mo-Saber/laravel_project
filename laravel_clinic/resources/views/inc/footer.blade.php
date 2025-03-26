@@ -18,7 +18,7 @@
                 <a href="{{ route('page.majors') }}" class="link text-white">Majors</a>
                 <a href="{{ route('page.reserve') }}" class="link text-white">Doctors</a>
                 <a href="{{ route('page.login') }}" class="link text-white">Login</a>
-                <a href="{{ route('page.register') }}" class="link text-white">Register</a>
+                <a href="{{ route('register.create') }}" class="link text-white">Register</a>
                 <a href="{{ route('page.contact') }}" class="link text-white">Contact</a>
             </div>
         </div>

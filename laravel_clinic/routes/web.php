@@ -1,10 +1,13 @@
 <?php
 
+use App\Http\Controllers\registerController;
 use App\Models\appointment;
 use App\Models\doctor;
 use App\Models\Major;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,9 +51,8 @@ Route::get('/login', function(){
 })->name('page.login');
 
 
-Route::get('/register', function(){
-    return view('register');
-})->name('page.register');
+Route::get('/register', [registerController::class, 'create'])->name('register.create');
+Route::post('/register', [registerController::class, 'store'])->name('register.store');
 
 Route::get('/contact', function(){
     return view('contact');
@@ -109,26 +111,44 @@ Route::get('/doctor' , function(){
 
 
 
-//create appointment
-Route::get('/appointment' , function(){
-    $appo = new appointment();
-    $appo ->name = 'ali';
-    $appo ->phone = 01222201111;
-    $appo ->email = "des@gomajjil.com";
-    $appo ->doctor_id = 1;
-    $appo ->save();
+
+
+//create query builder
+Route::get('/add-user' , function(){
+    DB::table('users')->insert([
+        'name' => "eslam" ,
+        'phone' => 01222012021 ,
+        'email' => "eslam@gmail.com" ,
+        'password' => 01012055 ,
+    ]);
 });
 
 
 
+//delete query builder
+Route::get('/delete-user' , function(){
+    DB::table('users')->where('id' , 2)->delete();
+});
 
 
+//relation 1 to 1 :
+// Route::get('/relation' , function(){
+//     $user = User::find(1) ;
+//     dd($user->profile) ;
+// });
 
 
+//relation 1 to m :
+Route::get('/relation' , function(){
+    $doctor = doctor::find(1) ;
+    dd($doctor->major) ;
+});
 
 
-
-
+//face data :
+Route::get('/face' , function(){
+    Major::factory(15)->create();
+});
 
 
 

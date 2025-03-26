@@ -16,7 +16,7 @@
                 <a type="button" class="btn btn-outline-light navigation--button"
                     href="{{ route('page.doctors') }}">Doctors</a>
                 <a type="button" class="btn btn-outline-light navigation--button" href="{{ route('page.login') }}">login</a>
-                <a type="button" class="btn btn-outline-light navigation--button" href="{{ route('page.register') }}">Register</a>
+                <a type="button" class="btn btn-outline-light navigation--button" href="{{ route('register.create') }}">Register</a>
             </div>
         </div>
     </div>
